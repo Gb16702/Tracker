@@ -1,0 +1,12 @@
+.preloaderContainer::before {
+    @apply content-[''] absolute w-[100px] h-[100px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-t-4 border-[#603AD9] rounded-full animate-[preloader-spin_1.5s_linear_infinite]
+}
+
+@keyframes preloader-spin {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
