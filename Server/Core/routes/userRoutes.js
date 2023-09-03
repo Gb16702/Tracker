@@ -144,12 +144,16 @@ router.patch("/api/users/:id", async (req, res) => {
 
     if (!user) return res.status(404).send("Le compte n'existe pas (ou plus)");
     else return res.status(200).send({ message: "Compte modifié avec succès" });
-  } catch (e) {}
+  } catch (e) {
+    return res.status(500).send(`Erreur : ${e}`);
+  }
 });
 
 router.post("/api/users/:id", async (req, res) => {
   if (req.method !== "POST")
     return res.status(405).send("Méthode non autorisée");
+
+  console.log("OK");
 
   const { id } = req.params,
     { email } = req.body;
@@ -193,6 +197,8 @@ router.post("/api/users/:id", async (req, res) => {
     };
 
     await sendGrid.send(mail);
+
+    console.log(mail);
 
     if (!req.body.username) {
       const isExistingEmailToken = await VerificationToken.findOne({
