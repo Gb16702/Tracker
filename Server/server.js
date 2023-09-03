@@ -3,16 +3,16 @@ const path = require("path");
 global.dotenv = require("dotenv").config({
   path: path.join(__dirname, "../../.env"),
 });
-const db = require("./database/db");
+const db = require("./Core/database/db");
 
-const userRoute = require("./routes/userRoutes"),
-  roleRoute = require("./routes/roleRoutes"),
-  authRoute = require("./routes/authRoutes"),
-  adminRoute = require("./routes/adminRoutes"),
-  gamesRoute = require("./routes/gamesRoutes"),
-  sujetsRoute = require("./routes/sujetsRoutes"),
-  contactRoute = require("./routes/contactRoutes"),
-  testimonialsRoute = require("./routes/testimonialsRoutes");
+const userRoute = require("./Core/routes/userRoutes"),
+  roleRoute = require("./Core/routes/roleRoutes"),
+  authRoute = require("./Core/routes/authRoutes"),
+  adminRoute = require("./Core/routes/adminRoutes"),
+  gamesRoute = require("./Core/routes/gamesRoutes"),
+  sujetsRoute = require("./Core/routes/sujetsRoutes"),
+  contactRoute = require("./Core/routes/contactRoutes"),
+  testimonialsRoute = require("./Core/routes/testimonialsRoutes");
 
 const cors = require("cors"),
   cookieParser = require("cookie-parser"),
