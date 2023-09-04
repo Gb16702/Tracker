@@ -178,13 +178,13 @@ router.post("/users/:id", async (req, res) => {
     if (req.body.username) {
       templateId = "d-413c517499164ecea9087ea5ea067c10";
       templateData = {
-        url: `${process.env.NEXT_PUBLIC_API_URL}/${user.slug}/reset-password/${token}`,
+        url: `https://tracker-w-gb16702.vercel.app/${user.slug}/reset-password/${token}`,
         username: user.username,
       };
     } else {
       templateId = "d-69851eaa132345c382383cc8bf0c6d5a";
       templateData = {
-        url: `${process.env.NEXT_PUBLIC_API_URL}/${user.slug}/reset-email/${token}`,
+        url: `https://tracker-w-gb16702.vercel.app/${user.slug}/reset-email/${token}`,
         username: user.username,
       };
     }
