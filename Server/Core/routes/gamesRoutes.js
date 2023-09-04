@@ -12,7 +12,7 @@ const fetch = require("node-fetch");
 const seed = require("../utils/seed");
 const Player = require("../database/schemas/Player");
 
-router.get("/api/games", async (req, res) => {
+router.get("/games", async (req, res) => {
   if (req.method !== "GET")
     return res.status(405).send({ message: "Méthode non autorisée" });
 
