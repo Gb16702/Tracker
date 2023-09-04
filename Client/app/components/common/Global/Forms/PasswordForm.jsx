@@ -9,22 +9,15 @@ const PasswordForm = () => {
   const { data: session, update } = useSession();
   const [isClicked, setIsClicked] = useState(false);
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    setIsClicked(true);
-
-    return toast.custom(
-      <Toast
-        message={`Un email vous a été envoyé !`}
-        variant="admin_success"
-        type="Succès"
-        dark
-      />
-    );
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsClicked(true);
+    <Toast
+      message={`Un email vous a été envoyé !`}
+      variant="admin_success"
+      type="Succès"
+      dark
+    />;
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/users/${session?.user.id}`,
       {
@@ -48,6 +41,14 @@ const PasswordForm = () => {
           passwordToken: token,
         },
       });
+      return toast.custom(
+        <Toast
+          message={`Email modifié avec succès !`}
+          variant="admin_success"
+          type="Succès"
+          dark
+        />
+      );
     }
   };
 
@@ -56,9 +57,7 @@ const PasswordForm = () => {
       <label className="text-zinc-200 text-sm font-medium">
         Modifier le mot de passe
       </label>
-      <button
-        className="bg-[#0F141A] border border-[#303742] w-full h-[41px] gap-4 flex items-center text-base disabled:opacity-50 disabled:pointer-events-none outline-none px-3 mt-1 rounded-[5px] font-normal text-zinc-400 mb-3"
-      >
+      <button className="bg-[#0F141A] border border-[#303742] w-full h-[41px] gap-4 flex items-center text-base disabled:opacity-50 disabled:pointer-events-none outline-none px-3 mt-1 rounded-[5px] font-normal text-zinc-400 mb-3">
         {isClicked && "Email envoyé !"}
       </button>
     </div>

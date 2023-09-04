@@ -16,6 +16,7 @@ export default function RootLayout({ children }) {
     <html lang="fr" className={poppins.className}>
       <body className="bg-[#1E1E20]">
         <AuthProvider>{children}</AuthProvider>
+        <Cookie />
       </body>
     </html>
   );

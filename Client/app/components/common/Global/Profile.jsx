@@ -34,7 +34,7 @@ const Profile = () => {
               <Menu.Item>
                 <div className="flex flex-row gap-x-4 items-center justify-start border-b border-[#333333] py-2">
                   <Link
-                    href="/administration/authentification"
+                    href="/administration/dashboard"
                     className="flex justify-start hover:opacity-70 transition-all duration-300 relative text-sm text-zinc-300"
                   >
                     Administration
