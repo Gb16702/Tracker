@@ -24,7 +24,7 @@ router.get("/games", async (req, res) => {
   return res.status(200).send({ games });
 });
 
-router.post("/api/jeux", upload.none(), async (req, res) => {
+router.post("/jeux", upload.none(), async (req, res) => {
   if (req.method != "POST")
     return res.status(405).send({ message: "Méthode non autorisée" });
 
@@ -93,7 +93,7 @@ router.post("/api/jeux", upload.none(), async (req, res) => {
   }
 });
 
-router.patch("/api/jeu", upload.none(), async (req, res) => {
+router.patch("/jeu", upload.none(), async (req, res) => {
   try {
     const { statusUpdates, identifier } = req.body;
 
@@ -162,7 +162,7 @@ router.patch("/api/jeu", upload.none(), async (req, res) => {
   }
 });
 
-router.delete("/api/jeu", async (req, res) => {
+router.delete("/jeu", async (req, res) => {
   if (req.method !== "DELETE")
     return res.status(405).send({ error: "Méthode non autorisée" });
 
@@ -200,7 +200,7 @@ router.delete("/api/jeu", async (req, res) => {
   }
 });
 
-router.get("/api/jeu/:slug/joueur/:id", async (req, res) => {
+router.get("/jeu/:slug/joueur/:id", async (req, res) => {
   if (req.method !== "GET")
     return res.status(405).send({ message: "Méthode non autorisée" });
 
@@ -239,7 +239,7 @@ router.get("/api/jeu/:slug/joueur/:id", async (req, res) => {
     .send({ player, similarPlayers: similarPlayers_, banner: game.banner });
 });
 
-router.get("/api/jeu/:slug/allUsers", async (req, res) => {
+router.get("/jeu/:slug/allUsers", async (req, res) => {
   if (req.method !== "GET")
     return res.status(405).send({ message: "Méthode non autorisée" });
 
@@ -270,7 +270,7 @@ router.get("/api/jeu/:slug/allUsers", async (req, res) => {
   return res.status(200).send({ users });
 });
 
-router.get("/api/jeu/:slug", async (req, res) => {
+router.get("/jeu/:slug", async (req, res) => {
   if (req.method !== "GET")
     return res.status(405).send({ message: "Méthode non autorisée" });
 

@@ -6,7 +6,7 @@ const argon = require("argon2");
 const sendGrid = require("@sendgrid/mail");
 const router = express.Router();
 
-router.post("/api/login", async (req, res) => {
+router.post("/login", async (req, res) => {
   if (req.method !== "POST") {
     return res.status(405).send({ message: "Méthode non autorisée" });
   }
@@ -45,7 +45,7 @@ const deleteExpiredCode = async () => {
 
 setInterval(deleteExpiredCode, 1000 * 60);
 
-router.get("/api/getCode", async (req, res) => {
+router.get("/getCode", async (req, res) => {
   if (req.method !== "GET")
     return res.status(405).send({ message: "Méthode non autorisée" });
 
@@ -100,7 +100,7 @@ router.get("/api/getCode", async (req, res) => {
   }
 });
 
-router.post("/api/verifyCode", async (req, res) => {
+router.post("/verifyCode", async (req, res) => {
   if (req.method !== "POST")
     return res.status(405).send({ message: "Méthode non autorisée" });
 
@@ -159,7 +159,7 @@ router.post("/api/verifyCode", async (req, res) => {
   }
 });
 
-router.post("/api/auth/forgot-password", async (req, res) => {
+router.post("/auth/forgot-password", async (req, res) => {
   if (req.method !== "POST")
     return res.status(405).send({ message: "Méthode non autorisée" });
 
@@ -205,7 +205,7 @@ router.post("/api/auth/forgot-password", async (req, res) => {
   }
 });
 
-router.patch("/api/password", async (req, res) => {
+router.patch("/password", async (req, res) => {
   if (req.method !== "PATCH")
     return res.status(405).send({ message: "Méthode non autorisée" });
 

@@ -2,7 +2,7 @@ const express = require("express");
 const Role = require("../database/schemas/Role");
 const router = express.Router();
 
-router.get("/api/roles", async (req, res) => {
+router.get("/roles", async (req, res) => {
     if(req.method !== "GET")
         return res.status(405).send({message : "Méthode non autorisée"})
     const {grade} = req.query;

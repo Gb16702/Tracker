@@ -5,7 +5,7 @@ const argon = require("argon2");
 
 const router = express.Router();
 
-router.post("/api/admin", async (req, res) => {
+router.post("/admin", async (req, res) => {
   if (req.method !== "POST")
     return res.status(405).send("Méthode non autorisée");
 
@@ -42,7 +42,7 @@ router.post("/api/admin", async (req, res) => {
   res.status(200).send({ message: "OK" });
 });
 
-router.get("/api/admin/users", async (req, res) => {
+router.get("/admin/users", async (req, res) => {
   if (req.method !== "GET")
     return res.status(405).send({ message: "Méthode non autorisée" });
 
@@ -71,7 +71,7 @@ router.get("/api/admin/users", async (req, res) => {
   });
 });
 
-router.delete("/api/admin/users/:id", async (req, res) => {
+router.delete("/admin/users/:id", async (req, res) => {
   if (req.method !== "DELETE")
     return res.status(405).send({ message: "Méthode non autorisée" });
 
@@ -83,7 +83,7 @@ router.delete("/api/admin/users/:id", async (req, res) => {
   }
 });
 
-router.get("/api/admin/users/:slug", async (req, res) => {
+router.get("/admin/users/:slug", async (req, res) => {
   const { slug } = req.params;
 
   const user = await User.findOne({ slug })
@@ -92,7 +92,7 @@ router.get("/api/admin/users/:slug", async (req, res) => {
   res.status(200).send({ user });
 });
 
-router.get("/api/admin/allUsers", async (req, res) => {
+router.get("/admin/allUsers", async (req, res) => {
   if (req.method !== "GET")
     return res.status(405).send({ message: "Méthode non autorisée" });
 

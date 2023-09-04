@@ -3,7 +3,7 @@ const router = express.Router();
 
 const Subject = require("../database/schemas/Subject");
 
-router.get("/api/sujets", async (req, res) => {
+router.get("/sujets", async (req, res) => {
   if (req.method !== "GET")
     return res.status(405).send({ error: "Méthode non autorisée" });
 
@@ -16,7 +16,7 @@ router.get("/api/sujets", async (req, res) => {
   res.status(200).send(sujets);
 });
 
-router.post("/api/sujets", async (req, res) => {
+router.post("/sujets", async (req, res) => {
   if (req.method !== "POST")
     return res.status(405).send({ error: "Méthode non autorisée" });
 
@@ -35,7 +35,7 @@ router.post("/api/sujets", async (req, res) => {
   res.status(201).send("Sujet créé avec succès");
 });
 
-router.delete("/api/sujet", async (req, res) => {
+router.delete("/sujet", async (req, res) => {
   if (req.method !== "DELETE")
     return res.status(405).send({ error: "Méthode non autorisée" });
 
@@ -58,7 +58,7 @@ router.delete("/api/sujet", async (req, res) => {
   res.status(200).send({ message: "Opération effectuée avec succès" });
 });
 
-router.patch("/api/sujet", async (req, res) => {
+router.patch("/sujet", async (req, res) => {
   if (req.method !== "PATCH") {
     return res.status(405).send({ error: "Méthode non autorisée" });
   }

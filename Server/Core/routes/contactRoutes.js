@@ -4,7 +4,7 @@ const Subject = require("../database/schemas/Subject");
 
 const router = express.Router();
 
-router.post("/api/contact", async (req, res) => {
+router.post("/contact", async (req, res) => {
   if (req.method !== "POST")
     return res.status(405).json({ message: "Méthode non autorisée" });
 

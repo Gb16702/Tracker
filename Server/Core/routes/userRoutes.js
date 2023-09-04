@@ -19,7 +19,7 @@ cloudinary.config(cloudConfig);
 
 const router = express.Router();
 
-router.post("/api/users", async (req, res) => {
+router.post("/users", async (req, res) => {
   if (req.method !== "POST")
     return res.status(405).send({ message: "Méthode non autorisée" });
 
@@ -79,7 +79,7 @@ router.post("/api/users", async (req, res) => {
   }
 });
 
-router.get("/api/users", async (req, res) => {
+router.get("/users", async (req, res) => {
   try {
     const users = await User.find({});
     res.send(users);
@@ -88,7 +88,7 @@ router.get("/api/users", async (req, res) => {
   }
 });
 
-router.delete("/api/users/:id", async (req, res) => {
+router.delete("/users/:id", async (req, res) => {
   try {
     if (req.method !== "DELETE")
       return res.status(405).send("Méthode non autorisée");
@@ -126,7 +126,7 @@ router.delete("/api/users/:id", async (req, res) => {
   }
 });
 
-router.patch("/api/users/:id", async (req, res) => {
+router.patch("/users/:id", async (req, res) => {
   if (req.method !== "PATCH")
     return res.status(405).send("Méthode non autorisée");
 
@@ -149,7 +149,7 @@ router.patch("/api/users/:id", async (req, res) => {
   }
 });
 
-router.post("/api/users/:id", async (req, res) => {
+router.post("/users/:id", async (req, res) => {
   if (req.method !== "POST")
     return res.status(405).send("Méthode non autorisée");
 
@@ -242,7 +242,7 @@ router.post("/api/users/:id", async (req, res) => {
   }
 });
 
-router.patch("/api/users/:id/reset-email", async (req, res) => {
+router.patch("/users/:id/reset-email", async (req, res) => {
   if (req.method !== "PATCH")
     return res.status(405).send("Méthode non autorisée");
 
@@ -294,7 +294,7 @@ router.patch("/api/users/:id/reset-email", async (req, res) => {
   }
 });
 
-router.patch("/api/users/:id/reset-password", async (req, res) => {
+router.patch("/users/:id/reset-password", async (req, res) => {
   if (req.method !== "PATCH")
     return res.status(405).send("Méthode non autorisée");
 
@@ -353,7 +353,7 @@ router.patch("/api/users/:id/reset-password", async (req, res) => {
   }
 });
 
-router.delete("/api/users/:id/token", async (req, res) => {
+router.delete("/users/:id/token", async (req, res) => {
   if (req.method !== "DELETE")
     return res.status(405).send("Méthode non autorisée");
 
@@ -371,7 +371,7 @@ router.delete("/api/users/:id/token", async (req, res) => {
   }
 });
 
-router.patch("/api/users/:id/image", async (req, res) => {
+router.patch("/users/:id/image", async (req, res) => {
   if (req.method !== "PATCH")
     return res.status(405).send({ message: "Méthode non autorisée" });
 
@@ -414,7 +414,7 @@ router.patch("/api/users/:id/image", async (req, res) => {
   }
 });
 
-router.post("/api/users/:id/image", async (req, res) => {
+router.post("/users/:id/image", async (req, res) => {
   if (req.method !== "POST")
     return res.status(405).send({ message: "Méthode non autorisée" });
 
@@ -452,7 +452,7 @@ router.post("/api/users/:id/image", async (req, res) => {
   }
 });
 
-router.patch("/api/user/roles", async (req, res) => {
+router.patch("/user/roles", async (req, res) => {
 
     if(req.method !== "PATCH")
       return res.status(405).send({ message: "Méthode non autorisée" });
