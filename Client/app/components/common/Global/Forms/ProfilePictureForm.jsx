@@ -32,7 +32,7 @@ const ProfilePictureForm = () => {
 
   const fetcher = async ({ base64EncodedImage }) => {
     const response = await fetch(
-      `http://localhost:8000/api/users/${session?.user?.id}/image`,
+      `${process.env.NEXT_PUBLIC_API_URL}/users/${session?.user?.id}/image`,
       {
         method: "POST",
         headers: {

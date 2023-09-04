@@ -29,7 +29,7 @@ const ResetEmail = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:8000/api/users/${session?.user?.id}/reset-email`,
+        `${process.env.NEXT_PUBLIC_API_URL}/users/${session?.user?.id}/reset-email`,
         {
           method: "PATCH",
           headers: {

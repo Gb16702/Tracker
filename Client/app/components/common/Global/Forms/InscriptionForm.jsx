@@ -36,7 +36,7 @@ const InscriptionForm = () => {
 
     try {
       setLoading(true);
-      const response = await fetch("http://localhost:8000/api/users", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

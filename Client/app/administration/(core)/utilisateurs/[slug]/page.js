@@ -7,7 +7,7 @@ import EditRolesComponent from "@/app/components/common/Global/Admin/EditRolesCo
 
 const page = async ({ params }) => {
   const response = await fetch(
-    `http://localhost:8000/api/admin/users/${params.slug}`,
+    `${process.env.DEV_API_URL}/admin/users/${params.slug}`,
     {
       cache: "no-store",
     });

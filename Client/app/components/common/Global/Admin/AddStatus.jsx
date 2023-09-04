@@ -33,7 +33,7 @@ const fetcher = async (
   }
 
   try {
-    const response = await fetch(`http://localhost:8000/api/${pathname}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/${pathname}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

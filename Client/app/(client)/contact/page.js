@@ -2,7 +2,7 @@ import Contact from "../../components/Pages/contact/Contact"
 
 const contact = async () => {
 
-    const response = await fetch("http://localhost:8000/api/sujets", {
+    const response = await fetch(`${process.env.DEV_API_URL}/sujets`, {
         cache: "no-store",
     })
 

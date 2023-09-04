@@ -26,7 +26,7 @@ const EditStatus = ({
 
   const sendUpdateRequest = async (requestBody) => {
     try {
-      const response = await fetch(`http://localhost:8000/api/${item}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/${item}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

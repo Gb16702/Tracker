@@ -1,12 +1,7 @@
 "use client";
 
-import GoogleProvider from "next-auth/providers/google";
-import DiscordProvider from "next-auth/providers/discord";
 import CredentialsProvider from "next-auth/providers/credentials";
-import {
-  getGoogleCredentials,
-  getDiscordCredentials,
-} from "./getProvidersCredentials";
+
 
 export const authOptions = {
   session: {
@@ -16,18 +11,10 @@ export const authOptions = {
     signIn: "/connexion",
   },
   providers: [
-    GoogleProvider({
-      clientId: getGoogleCredentials().clientId,
-      clientSecret: getGoogleCredentials().clientSecret,
-    }),
-    DiscordProvider({
-      clientId: getDiscordCredentials().clientId,
-      clientSecret: getDiscordCredentials().clientSecret,
-    }),
     CredentialsProvider({
       async authorize(credentials) {
         try {
-          const res = await fetch("http://localhost:8000/api/login", {
+          const res = await fetch(`${process.env.DEV_API_URL}/login`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

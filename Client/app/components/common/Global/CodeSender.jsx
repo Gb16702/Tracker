@@ -25,7 +25,7 @@ const CodeSender = () => {
   const handleClick = async () => {
     setIsOpen(true);
 
-    const data = await fetch(`http://localhost:8000/api/getCode?email=${email}`)
+    const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/getCode?email=${email}`)
     if(data.ok) {
       const dataToJson = await data.json()
       setResponse(dataToJson)
@@ -38,7 +38,7 @@ const CodeSender = () => {
     setLoading(true)
     const input = e.target[0].value
     if(input === response.value) {
-      const response = await fetch("http://localhost:8000/api/verifyCode", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/verifyCode`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

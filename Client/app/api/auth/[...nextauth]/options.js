@@ -18,7 +18,7 @@ export const options= {
       },
       async authorize(credentials) {
         try {
-          const res = await fetch("http://localhost:8000/api/login", {
+          const res = await fetch(`${process.env.DEV_API_URL}/login`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

@@ -54,7 +54,7 @@ const LastRegistered = ({ users, head }) => {
               </td>
               <td className="px-6 py-4">
                 <Link
-                  href={`http://localhost:3000/administration/utilisateurs/${user.slug}`}
+                  href={`${process.env.NEXT_PUBLIC_URL}/administration/utilisateurs/${user.slug}`}
                   className="text-vprimary hover:underline"
                 >
                   Voir le profil

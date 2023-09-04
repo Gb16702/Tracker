@@ -9,7 +9,7 @@ export const metadata = {
 };
 
 export default async function GameLayout({ children }) {
-  const response = await fetch("http://localhost:8000/api/games", {
+  const response = await fetch(`${process.env.DEV_API_URL}/games`, {
     cache: "no-store",
   });
 

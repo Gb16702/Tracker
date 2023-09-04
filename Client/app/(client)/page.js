@@ -4,13 +4,13 @@ import Testimonials from "../components/Pages/home/Testimonials";
 
 export default async function Home() {
   const response = await fetch(
-    "http://localhost:8000/api/testimonials/published",
+    `${process.env.DEV_API_URL}/testimonials/published`,
     {
       cache: "no-store",
     }
   );
 
-  const data = await fetch("http://localhost:8000/api/games", {
+  const data = await fetch(`${process.env.DEV_API_URL}/api/games`, {
     cache: "no-store",
   });
 

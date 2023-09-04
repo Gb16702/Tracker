@@ -11,22 +11,15 @@ const EmailForm = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    setIsClicked(true);
 
-    return toast.custom(
-      <Toast
-        message={`Un email vous a été envoyé !`}
-        variant="admin_success"
-        type="Succès"
-        dark
-      />
-    );
+
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsClicked(true);
     const response = await fetch(
-      `http://localhost:8000/api/users/${session?.user.id}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/users/${session?.user.id}`,
       {
         method: "POST",
         headers: {
@@ -45,21 +38,28 @@ const EmailForm = () => {
           emailToken: token,
         },
       });
+      return toast.custom(
+        <Toast
+          message={`Un email vous a été envoyé !`}
+          variant="admin_success"
+          type="Succès"
+          dark
+        />
+      );
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-[300px] max-sm:w-[260px]">
+    <div onClick={handleSubmit} className="w-[300px] max-sm:w-[260px]">
       <label className="text-zinc-200 text-sm font-medium">
         Modifier l'adresse mail
       </label>
       <button
-        onClick={handleClick}
         className="bg-[#0F141A] border border-[#303742] w-full h-[41px] gap-4 flex items-center text-base disabled:opacity-50 disabled:pointer-events-none outline-none px-3 mt-1 rounded-[5px] font-normal text-zinc-400 mb-3"
       >
         {isClicked && "Email envoyé !"}
       </button>
-    </form>
+    </div>
   );
 };
 

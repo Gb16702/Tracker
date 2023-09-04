@@ -21,7 +21,7 @@ const DeleteAccount = ({user}) => {
     const handleSubmit = async e => {
         e.preventDefault()
         setLoading(true)
-        const response = await fetch(`http://localhost:8000/api/admin/users/${user.user._id}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/users/${user.user._id}`, {
             method: "DELETE",
         })
         if(!response.ok) {

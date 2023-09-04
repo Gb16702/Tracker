@@ -55,7 +55,7 @@ const TestimonialsForm = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:8000/api/testimonials", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/testimonials`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

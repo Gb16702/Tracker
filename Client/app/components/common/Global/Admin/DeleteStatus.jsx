@@ -26,7 +26,7 @@ const DeleteStatus = ({ selectedStatus, item }) => {
     setIsLoading(true);
     if (selectedStatus.length < 1) return;
     try {
-      const response = await fetch(`http://localhost:8000/api/${item}`, {
+      const response = await fetch(`${process.env.DNEXT_PUBLIC_API_URL}/${item}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

@@ -18,6 +18,9 @@ router.get("/api/games", async (req, res) => {
 
   const games = await Games.find({});
 
+  if(!games)
+    return res.status(404).send({message : "TAucun jeu trouvé"})
+
   return res.status(200).send({ games });
 });
 

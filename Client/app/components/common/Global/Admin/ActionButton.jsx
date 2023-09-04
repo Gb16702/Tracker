@@ -38,7 +38,7 @@ const ActionButton = ({
 
   const handleChange = async () => {
     const response = await fetch(
-      `http://localhost:8000/api/testimonials/${testimonialIdentifier}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/testimonials/${testimonialIdentifier}`,
       {
         method: "PATCH",
         headers: {

@@ -26,7 +26,7 @@ const PasswordForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch(
-      `http://localhost:8000/api/users/${session?.user.id}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/users/${session?.user.id}`,
       {
         method: "POST",
         headers: {

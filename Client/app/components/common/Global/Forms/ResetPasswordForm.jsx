@@ -23,7 +23,7 @@ const ResetPasswordForm = () => {
 
     setIsSubmitted(true)
 
-    const response = await fetch(`http://localhost:8000/api/users/${session?.user?.id}/reset-password`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/${session?.user?.id}/reset-password`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json"
