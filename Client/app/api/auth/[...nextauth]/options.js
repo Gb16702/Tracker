@@ -1,6 +1,6 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 
-export const options= {
+export const options = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -18,20 +18,32 @@ export const options= {
       },
       async authorize(credentials) {
         try {
-          const res = await fetch(`${process.env.DEV_API_URL}/login`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(credentials),
-          });
+          const res = await fetch(
+            `https://tracker-beryl-eight.vercel.app/login`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(credentials),
+            }
+          );
 
           if (!res.ok) {
             const { message } = await res.json();
             throw new Error(message ?? "Une erreur est survenue");
           }
-            const { userWithoutPassword: { _id: id, username, email, roles, slug, avatar}} = await res.json();
-            return { id, username, email, roles, slug, avatar };
+          const {
+            userWithoutPassword: {
+              _id: id,
+              username,
+              email,
+              roles,
+              slug,
+              avatar,
+            },
+          } = await res.json();
+          return { id, username, email, roles, slug, avatar };
         } catch (e) {
           console.log(e);
         }

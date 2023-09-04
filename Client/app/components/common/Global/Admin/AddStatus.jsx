@@ -10,9 +10,6 @@ import Cross from "../Icons/HeroIcons/admin/Cross";
 
 const fetcher = async (
   value,
-  description,
-  content,
-  selectedOptions,
   { pathname, data, popularity, session, key, banner }
 ) => {
   let bodyValue;
@@ -33,15 +30,18 @@ const fetcher = async (
   }
 
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/${pathname}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        ...bodyValue,
-      }),
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/${pathname}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...bodyValue,
+        }),
+      }
+    );
     return response;
   } catch (e) {
     console.log(e);
@@ -62,9 +62,7 @@ const AddStatus = ({ pathname, session, tags }) => {
     [key, setKey] = useState("");
 
   const getPathname = () => {
-    if (pathname === "tags") {
-      return "tag";
-    } else if (pathname === "contact") {
+    if (pathname === "contact") {
       return "contact";
     } else if (pathname === "jeux") {
       return "jeu";
@@ -205,7 +203,9 @@ const AddStatus = ({ pathname, session, tags }) => {
                       className="ml-2 text-zinc-400 text-sm font-light flex items-center justify-center"
                       id="selectedFile"
                     >
-                      {selectedFile ? selectedFile : "Aucun fichier sélectionné"}
+                      {selectedFile
+                        ? selectedFile
+                        : "Aucun fichier sélectionné"}
                     </span>
                   </div>
                   <div className="relative w-full bg-zinc-900 rounded-md h-[46px] flex overflow-hidden mt-1">

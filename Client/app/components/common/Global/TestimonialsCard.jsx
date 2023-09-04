@@ -8,7 +8,7 @@ const TestimonialsCard = ({ testimonial, setFocused, isAdmin }) => {
   shadowColor = "border-[1.5px] border-zinc-800";
   return isAdmin ? (
     <section
-      className={`bg-adminBgAlt px-3 py-4 min-h-[240px] fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 rounded-lg flex flex-col justify-between ${shadowColor}`}
+      className={`bg-adminBgAlt px-3 py-4 min-h-[240px] fixed top-1/2 left-1/2 -translate-x-1/2 min-w-[400px] max-sm:min-w-[95%] max-sm:w-[95%] -translate-y-1/2 z-20 rounded-lg flex flex-col justify-between ${shadowColor}`}
     >
       <div className="flex flex-row items-center justify-between h-[40px]">
         <h1 className="font-medium text-lg text-zinc-200">

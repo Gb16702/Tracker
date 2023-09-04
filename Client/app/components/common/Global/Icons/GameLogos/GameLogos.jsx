@@ -24,7 +24,7 @@ const GameLogos = ({ game }) => {
       </div>
     );
   } else {
-    return <div className="bg-zinc-900 p-2 rounded-[5px]"></div>;
+    return <div className="bg-zinc-900 p-2 rounded-[5px] w-[40px] h-[40px]"></div>;
   }
 };
 

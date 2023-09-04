@@ -30,7 +30,10 @@ const TrackerActionButton = ({ url }) => {
           ref={ref}
           className="fixed bg-[#0F1923] py-2 w-[175px] rounded-md border border-[#1b2733] px-2 z-50 text-sm"
         >
-          <Link href={`${process.env.NEXT_PUBLIC_URL}` + url} className="text-zinc-200">
+          <Link
+            href={`${process.env.NEXT_PUBLIC_URL}/` + url}
+            className="text-zinc-200"
+          >
             Voir le profil
           </Link>
         </div>

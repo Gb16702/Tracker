@@ -18,11 +18,11 @@ const Nav = ({ session }) => {
     setOpen(true);
   };
 
-  const handleClick = e => {
+  const handleClick = (e) => {
     if (ref.current && !ref.current.contains(e.target)) {
       setOpen(false);
     }
-  }
+  };
 
   return (
     <nav
@@ -34,8 +34,8 @@ const Nav = ({ session }) => {
           <NavItem link="/" isLogo={true} text="TRACKER." />
         </li>
       </ul>
-      <ul className="max-sm:hidden w-[440px] h-full flex items-center">
-        <li className="pr-7 flex h-full relative gap-x-5">
+      <ul className="max-sm:hidden w-[440px] h-full flex items-center justify-center">
+        <li className="flex h-full relative gap-x-5">
           <NavItem link="/" text="Accueil" />
           <NavItem link="/contact" text="Contact" />
           {session ? (
@@ -43,22 +43,23 @@ const Nav = ({ session }) => {
           ) : (
             <NavItem link="/connexion" text="Connexion" />
           )}
-          <span className="absolute right-0 bg-zinc-600 h-[50%] translate-y-1/2 w-[1px]"></span>
-        </li>
-        <li className="flex flex-row pl-5 h-[24px] items-center gap-1">
-          <Discord />
-          <Github />
         </li>
       </ul>
       {open && (
-        <div className="fixed z-50 w-full top-0 left-0 h-full bg-black/[.6] flex items-start py-[20%] justify-center backdrop-blur-[2px]" onClick={handleClick}>
-          <div className="flex items-center flex-col justify-center w-[95%] bg-zinc-900 rounded-md border border-zinc-800" ref={ref}>
+        <div
+          className="fixed z-50 w-full top-0 left-0 h-full bg-black/[.6] flex items-start py-[20%] justify-center backdrop-blur-[2px]"
+          onClick={handleClick}
+        >
+          <div
+            className="flex items-center flex-col justify-center w-[95%] bg-zinc-900 rounded-md border border-zinc-800"
+            ref={ref}
+          >
             <div className="text-zinc-200 fill-white flex flex-row items-center w-full px-2 justify-between py-2 border-b border-zinc-800">
               <h3 className="font-semibold">Menu</h3>
               <Close onClick={() => setOpen(false)} />
             </div>
             <ul className="flex gap-y-2 py-2 px-3 w-full">
-              <li className="pr-7 flex h-full relative gap-x-5 flex-col gap-y-2">
+              <li className="flex h-full relative gap-x-5 flex-col gap-y-2">
                 <NavItem link="/" text="Accueil" />
                 <NavItem link="/contact" text="Contact" />
                 {session ? (

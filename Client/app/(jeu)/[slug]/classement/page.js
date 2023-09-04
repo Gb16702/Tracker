@@ -64,7 +64,7 @@ const Page = async ({ params, searchParams }) => {
                     </th>
                     <td className="px-6 py-2">
                       <Link
-                        href={`${slug}/${p_._id}`}
+                        href={`${process.env.NEXT_PUBLIC_URL}/${slug}/${p_._id}`}
                         className="flex flex-row gap-x-3 items-center"
                       >
                         <Image

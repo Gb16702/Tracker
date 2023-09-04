@@ -123,7 +123,7 @@ const AllGames = ({ head, games }) => {
         </section>
         <div className="w-full flex justify-end gap-x-2">
           {selectedStatus.length >= 1 && (
-            <DeleteStatus selectedStatus={selectedStatus} item={item} />
+            <DeleteStatus selectedStatus={selectedStatus} setSelectedStatus={isSelectedStatus} item={item} />
           )}
           {selectedStatus.length <= 1 && (
             <EditStatus

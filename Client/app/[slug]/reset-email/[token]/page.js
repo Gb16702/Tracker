@@ -43,7 +43,7 @@ const page = async (req, res) => {
   });
 
   if (expiration < now) {
-    await fetch(`/api/users/${session?.id}/token`, {
+    await fetch(`/users/${session?.id}/token`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

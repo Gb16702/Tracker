@@ -26,11 +26,19 @@ const GameSlide = ({ games }) => {
 
   const [isMobile, setIsMobile] = useState(false);
 
-  const sortedGames = [...games];
+  const gamesPerSlide = isMobile ? 2 : 5;
+
+  const [startIndex, setStartIndex] = useState(0),
+  [lastClicked, setLastClicked] = useState(null);
+
+  const gamesToShow = games.slice(startIndex, startIndex + gamesPerSlide);
+
+  const sortedGamesToShow = [...gamesToShow];
+
   if (sortBy === "Popularité") {
-    sortedGames.sort((a, b) => b.popularity - a.popularity);
+    sortedGamesToShow.sort((a, b) => b.popularity - a.popularity);
   } else if (sortBy === "Nom") {
-    sortedGames.sort((a, b) => a.name.localeCompare(b.name));
+    sortedGamesToShow.sort((a, b) => a.name.localeCompare(b.name));
   }
 
   useEffect(() => {
@@ -60,10 +68,8 @@ const GameSlide = ({ games }) => {
     }
   }, []);
 
-  const [startIndex, setStartIndex] = useState(0),
-    [lastClicked, setLastClicked] = useState(null);
 
-  const gamesPerSlide = isMobile ? 2 : 5;
+
   const maxIndex = games.length - gamesPerSlide;
 
   const handleClick = (e) => {
@@ -123,24 +129,22 @@ const GameSlide = ({ games }) => {
         </div>
         <div>
           <div className="flex flex-row gap-x-6 mt-6">
-            {games
-              .slice(startIndex, startIndex + gamesPerSlide)
-              .map((g_, index) => (
-                <Link href={`${g_.slug}`} key={index} className="">
-                  {g_.image && (
-                    <Image
-                      src={g_.image}
-                      alt={g_.name}
-                      width={1000}
-                      height={1000}
-                      className="w-[190px] h-[250px] object-cover rounded-md hover:brightness-110 min-w-[170px] max-sm:h-[230px]"
-                    />
-                  )}
-                  <h2 className="text-[15px] text-white font-medium mt-2">
-                    {g_.name}
-                  </h2>
-                </Link>
-              ))}
+            {sortedGamesToShow.map((g_, index) => (
+              <Link href={`${g_.slug}`} key={index} className="">
+                {g_.image && (
+                  <Image
+                    src={g_.image}
+                    alt={g_.name}
+                    width={1000}
+                    height={1000}
+                    className="w-[190px] h-[250px] object-cover rounded-md hover:brightness-110 min-w-[170px] max-sm:h-[230px]"
+                  />
+                )}
+                <h2 className="text-[15px] text-white font-medium mt-2">
+                  {g_.name}
+                </h2>
+              </Link>
+            ))}
           </div>
           {isMobile ||
             (games.length > gamesPerSlide && (

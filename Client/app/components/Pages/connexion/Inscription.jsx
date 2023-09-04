@@ -3,7 +3,6 @@
 import InscriptionForm from "../../common/Global/Forms/InscriptionForm";
 import Link from "next/link";
 import { FormEnglober } from "../../common/Global/FormEnglober";
-import FormBottom from "../../common/Global/FormBottom";
 import { Ramabhadra } from "next/font/google";
 import { Orbitron } from "next/font/google";
 
@@ -44,7 +43,6 @@ const Inscription = () => {
           </FormEnglober>
         </div>
       </div>
-      <FormBottom />
     </section>
   );
 };

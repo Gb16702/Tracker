@@ -10,8 +10,9 @@ export default async function Home() {
     }
   );
 
-  const data = await fetch(`${process.env.DEV_API_URL}/api/games`, {
+  const data = await fetch(`${process.env.DEV_API_URL}/games`, {
     cache: "no-store",
+    method: "GET",
   });
 
   const testimonials = await response.json();

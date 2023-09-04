@@ -18,7 +18,7 @@ const Testimonials = ({ testimonials }) => {
     const userAgent = window.navigator.userAgent;
 
     const mobileRegex =
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mozilla/i;
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
 
     console.log(userAgent);
 

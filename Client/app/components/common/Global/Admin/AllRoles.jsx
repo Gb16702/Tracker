@@ -7,6 +7,7 @@ import { useState } from "react";
 import { Close } from "../Icons/HeroIcons/Close";
 import { ArrowTop, ArrowBottom } from "../Icons/HeroIcons/admin/ArrowsForMenu";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const RolesRow = ({ name, slug, grade, createdAt, User }) => {
   return (
@@ -99,7 +100,8 @@ const AllRoles = ({ head, roles, users, session }) => {
                           ) : (
                             filteredUsersByRole(users, role.name).map(
                               (user, index) => (
-                                <div
+                                <Link
+                                  href={`${process.env.NEXT_PUBLIC_URL}/administration/utilisateurs/${user.slug}`}
                                   key={index}
                                   className="flex items-center justify-between border-t-[.5px] border-zinc-800 py-3"
                                 >
@@ -114,7 +116,7 @@ const AllRoles = ({ head, roles, users, session }) => {
                                       ? session.username + " - toi"
                                       : user.username}
                                   </h3>
-                                </div>
+                                </Link>
                               )
                             )
                           )}

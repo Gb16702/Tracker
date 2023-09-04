@@ -3,7 +3,6 @@
 import ConnexionForm from "../../common/Global/Forms/ConnexionForm";
 import Link from "next/link";
 import { FormEnglober } from "../../common/Global/FormEnglober";
-import FormBottom from "../../common/Global/FormBottom";
 import { Ramabhadra } from "next/font/google";
 import { Orbitron } from "next/font/google";
 
@@ -44,7 +43,6 @@ const Connexion = () => {
           </FormEnglober>
         </div>
       </div>
-      <FormBottom />
     </section>
   );
 };

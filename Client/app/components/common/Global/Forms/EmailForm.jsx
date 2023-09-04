@@ -9,11 +9,7 @@ const EmailForm = () => {
   const { data: session, update } = useSession();
   const [isClicked, setIsClicked] = useState(false);
 
-  const handleClick = (e) => {
-    e.preventDefault();
 
-
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,9 +24,19 @@ const EmailForm = () => {
         body: JSON.stringify({ email: session?.user?.email }),
       }
     );
+
+    toast.custom(
+      <Toast
+        message={`Un email vous a été envoyé !`}
+        variant="admin_success"
+        type="Succès"
+        dark
+      />
+    );
+
     const { token } = await response.json();
 
-    if (response.ok && token) {
+    if (response.ok) {
       await update({
         ...session,
         user: {
@@ -40,7 +46,7 @@ const EmailForm = () => {
       });
       return toast.custom(
         <Toast
-          message={`Un email vous a été envoyé !`}
+          message={`Email modifié avec succès !`}
           variant="admin_success"
           type="Succès"
           dark

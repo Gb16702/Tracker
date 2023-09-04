@@ -52,17 +52,16 @@ const PasswordForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-[300px] max-sm:w-[260px]">
+    <div onClick={handleSubmit} className="w-[300px] max-sm:w-[260px]">
       <label className="text-zinc-200 text-sm font-medium">
         Modifier le mot de passe
       </label>
       <button
-        onClick={handleClick}
         className="bg-[#0F141A] border border-[#303742] w-full h-[41px] gap-4 flex items-center text-base disabled:opacity-50 disabled:pointer-events-none outline-none px-3 mt-1 rounded-[5px] font-normal text-zinc-400 mb-3"
       >
         {isClicked && "Email envoyé !"}
       </button>
-    </form>
+    </div>
   );
 };
 

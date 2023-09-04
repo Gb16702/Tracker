@@ -8,7 +8,7 @@ import { useState } from "react";
 import Toast from "../Toast";
 import { useRouter } from "next/navigation";
 
-const DeleteStatus = ({ selectedStatus, item }) => {
+const DeleteStatus = ({ selectedStatus, setSelectedStatus, item }) => {
   const router = useRouter();
 
   const [isVisible, setIsVisible] = useState(false),
@@ -26,15 +26,18 @@ const DeleteStatus = ({ selectedStatus, item }) => {
     setIsLoading(true);
     if (selectedStatus.length < 1) return;
     try {
-      const response = await fetch(`${process.env.DNEXT_PUBLIC_API_URL}/${item}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          state: selectedStatus,
-        }),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/${item}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            state: selectedStatus,
+          }),
+        }
+      );
       if (!response.ok) {
         return setIsLoading(false);
       } else {
@@ -44,6 +47,7 @@ const DeleteStatus = ({ selectedStatus, item }) => {
         toast.custom(
           <Toast message={message} variant="admin_success" type="Succès" dark />
         );
+        setSelectedStatus([]);
         router.refresh();
       }
     } catch (e) {
@@ -84,10 +88,7 @@ const DeleteStatus = ({ selectedStatus, item }) => {
               <Button
                 className={`w-full h-[46px] gap-4 flex items-center justify-center text-base font-medium transition-color disabled:opacity-50 disabled:pointer-events-none px-3 mt-2 rounded-[5px] transition-all dureation-300 bg-vprimary text-zinc-200`}
               >
-                {isLoading
-                  ? "Suppression..."
-                  : `Supprimer le ${item}`
-                }
+                {isLoading ? "Suppression..." : `Supprimer le ${item}`}
               </Button>
             </form>
           </div>
