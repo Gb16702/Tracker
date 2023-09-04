@@ -4,7 +4,7 @@ const router = express.Router();
 
 const Testimonials = require("../database/schemas/Testimonials");
 
-router.get("/api/testimonials", async (req, res) => {
+router.get("/testimonials", async (req, res) => {
   if (req.method !== "GET")
     return res.status(405).json({ message: "Méthode non autorisée" });
 
@@ -17,7 +17,7 @@ router.get("/api/testimonials", async (req, res) => {
   return res.status(200).send(testimonials);
 });
 
-router.post("/api/testimonials", async (req, res) => {
+router.post("/testimonials", async (req, res) => {
   if (req.method !== "POST")
     return res.status(405).json({ message: "Méthode non autorisée" });
 
@@ -52,7 +52,7 @@ router.post("/api/testimonials", async (req, res) => {
   return res.status(201).json({ message: "Merci pour votre témoignage" });
 });
 
-router.patch("/api/testimonials/:id", async (req, res) => {
+router.patch("/testimonials/:id", async (req, res) => {
   if (req.method !== "PATCH")
     return res.status(405).json({ message: "Méthode non autorisée" });
 
@@ -74,7 +74,7 @@ router.patch("/api/testimonials/:id", async (req, res) => {
   return res.status(200).json({ message: "Visibilité du témoignage modifiée" });
 });
 
-router.get("/api/testimonials/published", async (req, res) => {
+router.get("/testimonials/published", async (req, res) => {
   if (req.method !== "GET")
     return res.status(405).json({ message: "Méthode non autorisée" });
 
