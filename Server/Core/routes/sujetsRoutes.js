@@ -32,7 +32,7 @@ router.post("/sujets", async (req, res) => {
 
   await sujet.save();
 
-  res.status(201).send("Sujet créé avec succès");
+  res.status(201).send({message : "Sujet créé avec succès"});
 });
 
 router.delete("/sujet", async (req, res) => {

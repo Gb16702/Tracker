@@ -132,7 +132,7 @@ const AllGames = ({ head, games }) => {
               subject={games}
             />
           )}
-          <AddStatus pathname={lastSection} item={item} />
+          <AddStatus pathname={lastSection} item={item} isSelectedStatus={isSelectedStatus} />
         </div>
       </>
     </>

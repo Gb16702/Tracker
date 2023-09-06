@@ -8,10 +8,7 @@ import Toast from "../Toast";
 import { useRouter } from "next/navigation";
 import Cross from "../Icons/HeroIcons/admin/Cross";
 
-const fetcher = async (
-  value,
-  { pathname, data, popularity, session, key, banner }
-) => {
+const fetcher = async (value, pathname, { popularity, data, banner }) => {
   let bodyValue;
 
   if (pathname === "contact") {
@@ -48,18 +45,16 @@ const fetcher = async (
   }
 };
 
-const AddStatus = ({ pathname, session, tags }) => {
+const AddStatus = ({ pathname, session, tags, item, isSelectedStatus }) => {
   const [isModalOpen, setIsModalOpen] = useState(false),
     [loading, setLoading] = useState(false),
     [value, setValue] = useState(""),
     [selectedFile, setSelectedFile] = useState(null),
     [bannerFile, setBannerFile] = useState(null),
     [showSelectedFile, setShowSelectedFile] = useState(true),
-    [description, setDescription] = useState(""),
-    [content, setContent] = useState(""),
-    [selectedOptions, setSelectedOptions] = useState([]),
     [popularity, setPopularity] = useState(""),
-    [key, setKey] = useState("");
+    [key, setKey] = useState(""),
+    [disabled, setDisabled] = useState(false);
 
   const getPathname = () => {
     if (pathname === "contact") {
@@ -79,6 +74,8 @@ const AddStatus = ({ pathname, session, tags }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setDisabled(true);
+
     try {
       const target = e.currentTarget;
       const fileInput = Array.from(target.elements).find(
@@ -92,36 +89,46 @@ const AddStatus = ({ pathname, session, tags }) => {
         const bannerReader = new FileReader();
         bannerReader.readAsDataURL(bannerFile);
 
-        reader.onloadend = bannerReader.onloadend = async () => {
-          const base64EncodedImage = reader.result;
-          const base64EncodedBanner = bannerReader.result;
+        reader.onloadend = async () => {
+          bannerReader.onloadend = async () => {
+            const base64EncodedImage = reader.result;
+            const base64EncodedBanner = bannerReader.result;
 
-          await fetcher(value, description, content, selectedOptions, {
-            pathname,
-            key,
-            popularity,
-            data: base64EncodedImage,
-            banner: base64EncodedBanner,
-            session,
-          });
+            await fetcher(value, pathname, {
+              key,
+              popularity,
+              data: base64EncodedImage,
+              banner: base64EncodedBanner,
+              session,
+            });
 
-          setLoading(false);
-          setIsModalOpen(false);
-          router.refresh();
-        };
+            setLoading(false);
+            setIsModalOpen(false);
+            isSelectedStatus([]);
+            router.refresh();
 
-        reader.onerror = () => {
-          console.log("Erreur lors de la lecture de l'image");
+            toast.custom(
+              <Toast
+                message={`Le jeu a bien été ajouté`}
+                variant="admin_success"
+                type="Succès"
+                dark
+              />
+            );
+          };
+
+          reader.onerror = () => {
+            console.log("Erreur lors de la lecture de l'image");
+          };
         };
       } else {
-        await fetcher(value, description, content, selectedOptions, {
+        await fetcher(value, {
           pathname,
           key,
-          popularity,
-          data: null,
-          banner: null,
           session,
         });
+
+        console.log("value", value);
 
         setLoading(false);
         setIsModalOpen(false);
@@ -234,6 +241,7 @@ const AddStatus = ({ pathname, session, tags }) => {
                 </>
               )}
               <Button
+                disabled={disabled}
                 className={`w-full h-[46px] gap-4 flex items-center justify-center text-base font-medium transition-color disabled:opacity-50 disabled:pointer-events-none px-3 mt-2 rounded-[5px] transition-all dureation-300 bg-vprimary text-zinc-200`}
               >
                 {"Ajouter le " + getPathname()}

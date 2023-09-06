@@ -7,6 +7,7 @@ import DeleteStatus from "./DeleteStatus";
 import { usePathname } from "next/navigation";
 import EditStatus from "./EditStatus";
 import { ActionButton } from "./ActionButton";
+import AddTicket from "./AddTicket";
 
 const SubjectsRow = ({
   category,
@@ -23,6 +24,8 @@ const SubjectsRow = ({
     setIsSelected(!isSelected);
     onSelect(category, !isSelected);
   };
+
+  console.log("OK");
 
   return (
     <tr
@@ -116,7 +119,7 @@ const AllSubjects = ({ head, subjects }) => {
               )}
             </>
           )}
-          <AddStatus pathname={lastSection} item={item} />
+          <AddTicket />
         </div>
       </>
     </>
